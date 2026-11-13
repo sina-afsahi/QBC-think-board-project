@@ -14,6 +14,7 @@ const App = () => {
   const [notes, setNotes] = useState<NoteType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedNote, setSelectedNote] = useState<NoteType | null>(null);
+  const [editingNote, setEditingNote] = useState<NoteType | null>(null);
   const [deletingNoteId, setDeletingNoteId] = useState<NoteType["id"] | null>(
     null,
   );
@@ -51,6 +52,9 @@ const App = () => {
       .delete(`/notes/${deletingNoteId}`)
       .then(() => {
         toast.success("Note deleted successfully");
+        if (deletingNoteId === editingNote?.id) {
+          setEditingNote(null);
+        }
         setDeletingNoteId(null);
         fetchNotes();
       })
@@ -76,7 +80,11 @@ const App = () => {
       </header>
 
       <main className="container mx-auto max-w-5xl px-4 py-8">
-        <NoteForm onNoteCreated={fetchNotes} />
+        <NoteForm
+          editingNote={editingNote}
+          onNoteSaved={fetchNotes}
+          onCancelEdit={() => setEditingNote(null)}
+        />
         <NoteFilterBar />
 
         {isLoading ? (
@@ -99,6 +107,7 @@ const App = () => {
                 key={note.id}
                 note={note}
                 onView={() => setSelectedNote(note)}
+                onEdit={() => setEditingNote(note)}
                 onDelete={() => setDeletingNoteId(note.id)}
               />
             ))}
