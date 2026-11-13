@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 
 export const NoteFilterBar = () => {
   return (
-    <div className="flex gap-3 mb-6 items-center justify-between">
+    <div className="flex flex-col sm:flex-row gap-3 mb-6 items-stretch sm:items-center justify-between">
       <div className="w-80">
         <Input
           dir="auto"
@@ -11,7 +11,7 @@ export const NoteFilterBar = () => {
         />
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between sm:justify-end gap-2">
         <span className="text-sm text-muted-foreground whitespace-nowrap">
           Sort by:
         </span>
