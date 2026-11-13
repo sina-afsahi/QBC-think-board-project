@@ -3,7 +3,10 @@ import toast, { Toaster } from "react-hot-toast";
 import { DeleteConfirmModal } from "@/components/notes/DeleteConfirmModal";
 import { NoteCard } from "@/components/notes/NoteCard";
 import { NoteDetailModal } from "@/components/notes/NoteDetailModal";
-import { NoteFilterBar } from "@/components/notes/NoteFilterBar";
+import {
+  NoteFilterBar,
+  type SortOption,
+} from "@/components/notes/NoteFilterBar";
 import { NoteForm } from "@/components/notes/NoteForm";
 import { NoteSkeleton } from "@/components/notes/NoteSkeleton";
 import axiosInstance from "@/lib/axios";
@@ -19,6 +22,8 @@ const App = () => {
     null,
   );
   const [isDeleting, setIsDeleting] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState<SortOption>("Newest First");
 
   const fetchNotes = () => {
     setIsLoading(true);
@@ -67,6 +72,22 @@ const App = () => {
       });
   };
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
+  const filteredNotes = notes
+    .filter((note) => {
+      if (!normalizedQuery) return true;
+      return (
+        note.title.toLowerCase().includes(normalizedQuery) ||
+        note.content.toLowerCase().includes(normalizedQuery)
+      );
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.createdAt).getTime();
+      const dateB = new Date(b.createdAt).getTime();
+      return sortBy === "Newest First" ? dateB - dateA : dateA - dateB;
+    });
+
   return (
     <div className="min-h-screen bg-background">
       <Toaster position="top-right" />
@@ -85,7 +106,12 @@ const App = () => {
           onNoteSaved={fetchNotes}
           onCancelEdit={() => setEditingNote(null)}
         />
-        <NoteFilterBar />
+        <NoteFilterBar
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+        />
 
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -96,13 +122,15 @@ const App = () => {
             <NoteSkeleton />
             <NoteSkeleton />
           </div>
-        ) : notes.length === 0 ? (
+        ) : filteredNotes.length === 0 ? (
           <p className="text-center text-muted-foreground py-10">
-            No notes found.
+            {notes.length === 0
+              ? "No notes found."
+              : "No notes match your search."}
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {notes.map((note) => (
+            {filteredNotes.map((note) => (
               <NoteCard
                 key={note.id}
                 note={note}
