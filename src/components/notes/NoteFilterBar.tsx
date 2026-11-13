@@ -5,6 +5,7 @@ export const NoteFilterBar = () => {
     <div className="flex gap-3 mb-6 items-center justify-between">
       <div className="w-80">
         <Input
+          dir="auto"
           placeholder="Search notes by title or content"
           className="bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
         />

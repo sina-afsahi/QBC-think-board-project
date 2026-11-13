@@ -19,7 +19,10 @@ export const NoteCard = ({ note }: NoteCardProps) => {
     <Card className="flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow border-amber-300/80 bg-card">
       <div>
         <CardHeader className="pb-2">
-          <CardTitle className="text-base font-semibold text-amber-950 line-clamp-1">
+          <CardTitle
+            dir="auto"
+            className="text-base font-semibold text-amber-950 line-clamp-1"
+          >
             {note.title}
           </CardTitle>
         </CardHeader>

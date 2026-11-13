@@ -15,12 +15,14 @@ export const NoteForm = () => {
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div>
             <Input
+              dir="auto"
               placeholder="Note title"
               className="font-medium bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
             />
           </div>
           <div>
             <Textarea
+              dir="auto"
               placeholder="Write your thoughts here"
               rows={4}
               className="resize-none bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
