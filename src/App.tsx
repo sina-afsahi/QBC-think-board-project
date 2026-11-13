@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { DeleteConfirmModal } from "@/components/notes/DeleteConfirmModal";
 import { NoteCard } from "@/components/notes/NoteCard";
 import { NoteDetailModal } from "@/components/notes/NoteDetailModal";
 import { NoteFilterBar } from "@/components/notes/NoteFilterBar";
@@ -13,6 +14,10 @@ const App = () => {
   const [notes, setNotes] = useState<NoteType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedNote, setSelectedNote] = useState<NoteType | null>(null);
+  const [deletingNoteId, setDeletingNoteId] = useState<NoteType["id"] | null>(
+    null,
+  );
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchNotes = () => {
     setIsLoading(true);
@@ -36,6 +41,27 @@ const App = () => {
   useEffect(() => {
     fetchNotes();
   }, []);
+
+  const handleDeleteNote = () => {
+    if (!deletingNoteId) return;
+
+    setIsDeleting(true);
+
+    axiosInstance
+      .delete(`/notes/${deletingNoteId}`)
+      .then(() => {
+        toast.success("Note deleted successfully");
+        setDeletingNoteId(null);
+        fetchNotes();
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to delete note");
+      })
+      .finally(() => {
+        setIsDeleting(false);
+      });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -73,14 +99,23 @@ const App = () => {
                 key={note.id}
                 note={note}
                 onView={() => setSelectedNote(note)}
+                onDelete={() => setDeletingNoteId(note.id)}
               />
             ))}
           </div>
         )}
       </main>
+
       <NoteDetailModal
         note={selectedNote}
         onClose={() => setSelectedNote(null)}
+      />
+
+      <DeleteConfirmModal
+        isOpen={deletingNoteId !== null}
+        onClose={() => setDeletingNoteId(null)}
+        onConfirm={handleDeleteNote}
+        isDeleting={isDeleting}
       />
     </div>
   );

@@ -13,9 +13,10 @@ import type { NoteType } from "@/types/note.type";
 interface NoteCardProps {
   note: NoteType;
   onView: () => void;
+  onDelete: () => void;
 }
 
-export const NoteCard = ({ note, onView }: NoteCardProps) => {
+export const NoteCard = ({ note, onView, onDelete }: NoteCardProps) => {
   return (
     <Card className="flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow border-amber-300/80 bg-card">
       <div>
@@ -63,6 +64,7 @@ export const NoteCard = ({ note, onView }: NoteCardProps) => {
           <Button
             variant="outline"
             size="icon"
+            onClick={onDelete}
             className="size-9 rounded-full border-rose-300 bg-rose-50/50 text-rose-600 hover:bg-rose-100 hover:text-rose-700 cursor-pointer"
             title="Delete note"
           >

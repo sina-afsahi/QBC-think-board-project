@@ -11,18 +11,20 @@ interface DeleteConfirmModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
+  isDeleting?: boolean;
 }
 
 export const DeleteConfirmModal = ({
   isOpen,
   onClose,
   onConfirm,
+  isDeleting = false,
 }: DeleteConfirmModalProps) => {
   if (!isOpen) return null;
 
   return (
     <div
-      onClick={onClose}
+      onClick={isDeleting ? undefined : onClose}
       className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
     >
       <Card
@@ -48,12 +50,17 @@ export const DeleteConfirmModal = ({
           <Button
             variant="outline"
             onClick={onClose}
+            disabled={isDeleting}
             className="border-amber-300 bg-amber-50/50 hover:bg-amber-100 text-amber-950"
           >
             Cancel
           </Button>
-          <Button variant="destructive" onClick={onConfirm}>
-            Delete
+          <Button
+            variant="destructive"
+            onClick={onConfirm}
+            disabled={isDeleting}
+          >
+            {isDeleting ? "Deleting..." : "Delete"}
           </Button>
         </CardFooter>
       </Card>
