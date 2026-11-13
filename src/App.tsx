@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { NoteCard } from "@/components/notes/NoteCard";
+import { NoteDetailModal } from "@/components/notes/NoteDetailModal";
 import { NoteFilterBar } from "@/components/notes/NoteFilterBar";
 import { NoteForm } from "@/components/notes/NoteForm";
 import { NoteSkeleton } from "@/components/notes/NoteSkeleton";
@@ -11,6 +12,7 @@ import type { ResponseType } from "@/types/response.type";
 const App = () => {
   const [notes, setNotes] = useState<NoteType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedNote, setSelectedNote] = useState<NoteType | null>(null);
 
   const fetchNotes = () => {
     setIsLoading(true);
@@ -37,6 +39,8 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Toaster position="top-right" />
+
       <header className="border-b border-amber-300/70 bg-amber-100/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold tracking-tight text-amber-950">
@@ -46,7 +50,7 @@ const App = () => {
       </header>
 
       <main className="container mx-auto max-w-5xl px-4 py-8">
-        <NoteForm />
+        <NoteForm onNoteCreated={fetchNotes} />
         <NoteFilterBar />
 
         {isLoading ? (
@@ -65,11 +69,19 @@ const App = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {notes.map((note) => (
-              <NoteCard key={note.id} note={note} />
+              <NoteCard
+                key={note.id}
+                note={note}
+                onView={() => setSelectedNote(note)}
+              />
             ))}
           </div>
         )}
       </main>
+      <NoteDetailModal
+        note={selectedNote}
+        onClose={() => setSelectedNote(null)}
+      />
     </div>
   );
 };

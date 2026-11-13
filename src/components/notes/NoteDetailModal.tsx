@@ -28,14 +28,17 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
         className="w-full max-w-lg border-amber-300 bg-card shadow-xl"
       >
         <CardHeader className="flex flex-row items-start justify-between gap-4 border-b border-amber-200/70 pb-3">
-          <CardTitle dir="auto" className="text-lg font-bold text-amber-950">
+          <CardTitle
+            dir="auto"
+            className="flex-1 text-lg font-bold text-amber-950"
+          >
             {note.title}
           </CardTitle>
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="size-8 rounded-full text-amber-900 hover:bg-amber-200/60"
+            className="size-8 shrink-0 rounded-full text-amber-900 hover:bg-amber-200/60"
           >
             <X className="!size-4" />
           </Button>
