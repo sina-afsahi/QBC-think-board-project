@@ -27,7 +27,10 @@ export const NoteCard = ({ note }: NoteCardProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground line-clamp-3 whitespace-pre-wrap">
+          <p
+            dir="auto"
+            className="text-sm text-muted-foreground line-clamp-3 whitespace-pre-wrap"
+          >
             {note.content}
           </p>
         </CardContent>
