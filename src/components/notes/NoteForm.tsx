@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const NoteForm = () => {
   return (
-    <Card className="mb-8 shadow-sm">
+    <Card className="mb-8 shadow-sm border-amber-300/80 bg-card">
       <CardHeader className="pb-3">
         <CardTitle className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-medium w-fit">
           Create a New Note
@@ -14,13 +14,16 @@ export const NoteForm = () => {
       <CardContent>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div>
-            <Input placeholder="Note title" className="font-medium" />
+            <Input
+              placeholder="Note title"
+              className="font-medium bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
+            />
           </div>
           <div>
             <Textarea
               placeholder="Write your thoughts here"
               rows={4}
-              className="resize-none"
+              className="resize-none bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
             />
           </div>
           <div className="flex justify-end">
