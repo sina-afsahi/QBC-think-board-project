@@ -19,10 +19,16 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
   if (!note) return null;
 
   return (
-    <div className="fixed inset-0 bg-amber-950/40 flex items-center justify-center p-4">
-      <Card className="w-full max-w-lg border-amber-300 bg-card shadow-xl">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
+    >
+      <Card
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-lg border-amber-300 bg-card shadow-xl"
+      >
         <CardHeader className="flex flex-row items-start justify-between gap-4 border-b border-amber-200/70 pb-3">
-          <CardTitle className="text-lg font-bold text-amber-950">
+          <CardTitle dir="auto" className="text-lg font-bold text-amber-950">
             {note.title}
           </CardTitle>
           <Button
@@ -36,7 +42,10 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
         </CardHeader>
 
         <CardContent className="py-4 max-h-[60vh] overflow-y-auto">
-          <p className="text-sm leading-relaxed text-amber-950 whitespace-pre-wrap">
+          <p
+            dir="auto"
+            className="text-sm leading-relaxed text-amber-950 whitespace-pre-wrap"
+          >
             {note.content}
           </p>
         </CardContent>

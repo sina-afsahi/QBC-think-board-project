@@ -21,8 +21,14 @@ export const DeleteConfirmModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-amber-950/40 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md border-amber-300 bg-card shadow-xl">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
+    >
+      <Card
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-md border-amber-300 bg-card shadow-xl"
+      >
         <CardHeader className="pb-2">
           <CardTitle className="text-lg font-bold text-amber-950">
             Delete Note
