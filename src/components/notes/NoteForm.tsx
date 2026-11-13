@@ -29,7 +29,9 @@ export const NoteForm = () => {
             />
           </div>
           <div className="flex justify-end">
-            <Button type="submit">Add Note</Button>
+            <Button type="submit" className="w-full sm:w-auto">
+              Add Note
+            </Button>
           </div>
         </form>
       </CardContent>
