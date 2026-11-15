@@ -56,8 +56,7 @@ export const NoteForm = ({
           onCancelEdit();
           onNoteSaved();
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           toast.error("Failed to update note");
         })
         .finally(() => {
@@ -75,8 +74,7 @@ export const NoteForm = ({
           setContent("");
           onNoteSaved();
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           toast.error("Failed to create note");
         })
         .finally(() => {
