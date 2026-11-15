@@ -35,8 +35,7 @@ const App = () => {
           setNotes(response.data.response);
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         toast.error("Failed to fetch notes");
       })
       .finally(() => {
@@ -63,8 +62,7 @@ const App = () => {
         setDeletingNoteId(null);
         fetchNotes();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         toast.error("Failed to delete note");
       })
       .finally(() => {

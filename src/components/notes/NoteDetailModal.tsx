@@ -20,6 +20,8 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
       onClick={onClose}
       className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
     >
