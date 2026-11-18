@@ -6,24 +6,29 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fdf6e3;
-  --foreground: #292524;
-  --card: #fffbeb;
-  --card-foreground: #292524;
-  --popover: #fffbeb;
-  --popover-foreground: #292524;
-  --primary: #d97706;
-  --primary-foreground: #fffbeb;
-  --secondary: #fde68a;
-  --secondary-foreground: #92400e;
-  --muted: #fef3c7;
-  --muted-foreground: #78716c;
-  --accent: #fde68a;
-  --accent-foreground: #92400e;
-  --destructive: #e11d48;
-  --border: #f59e0b;
-  --input: #f59e0b;
-  --ring: #d97706;
+  --background: #f6f1e7;        
+  --foreground: #1b354b;       
+  --card: #fffdf9;             
+  --card-foreground: #1b354b;
+  --popover: #fffdf9;
+  --popover-foreground: #1b354b;
+
+  --primary: #c2591a;          
+  --primary-foreground: #fffdf9;
+
+  --secondary: #1b354b;         
+  --secondary-foreground: #fffdf9;
+
+  --muted: #ede5d8;            
+  --muted-foreground: #5c6b78;  
+
+  --accent: #efe7da;            
+  --accent-foreground: #1b354b;
+
+  --destructive: #dc2626;       
+  --border: #dfd5c5;            
+  --input: #d8cebe;             
+  --ring: #1b354b;             
   --radius: 0.625rem;
 }
 
@@ -58,7 +63,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans select-none;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled),

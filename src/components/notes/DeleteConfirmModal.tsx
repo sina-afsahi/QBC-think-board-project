@@ -27,14 +27,14 @@ export const DeleteConfirmModal = ({
       role="dialog"
       aria-modal="true"
       onClick={isDeleting ? undefined : onClose}
-      className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-[#1b354b]/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
       <Card
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md border-amber-300 bg-card shadow-xl"
+        className="w-full max-w-md border-[#dfd5c5] bg-card shadow-xl"
       >
         <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-bold text-amber-950">
+          <CardTitle className="text-lg font-bold text-[#1b354b]">
             Delete Note
           </CardTitle>
         </CardHeader>
@@ -48,7 +48,7 @@ export const DeleteConfirmModal = ({
           </p>
         </CardContent>
 
-        <CardFooter className="flex justify-end gap-2 pt-3 border-t border-amber-200/70">
+        <CardFooter className="flex justify-start gap-2 pt-3 border-t border-[#ece3d5]">
           <Button
             variant="outline"
             onClick={onClose}

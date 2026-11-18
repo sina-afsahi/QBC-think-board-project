@@ -23,7 +23,7 @@ export const NoteFilterBar = ({
           placeholder="Search notes by title or content"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
+          className="bg-[#fffdf9] border-[#d8cebe] text-[#1b354b] placeholder:text-[#5c6b78]/60"
         />
       </div>
 
@@ -34,7 +34,7 @@ export const NoteFilterBar = ({
         <select
           value={sortBy}
           onChange={(e) => onSortChange(e.target.value as SortOption)}
-          className="h-9 rounded-md border border-amber-300/90 bg-amber-50/70 px-3 py-1 text-sm text-amber-950 shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          className="h-9 rounded-md border border-[#d8cebe] bg-[#fffdf9] px-3 py-1 text-sm text-[#1b354b] shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           <option value="Newest First">Newest First</option>
           <option value="Oldest First">Oldest First</option>

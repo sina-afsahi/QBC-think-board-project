@@ -23,16 +23,16 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-50 bg-amber-950/40 backdrop-blur-xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-[#1b354b]/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
       <Card
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-lg border-amber-300 bg-card shadow-xl"
+        className="w-full max-w-lg border-[#dfd5c5] bg-card shadow-xl"
       >
-        <CardHeader className="flex flex-row items-start justify-between gap-4 border-b border-amber-200/70 pb-3">
+        <CardHeader className="flex flex-row items-start justify-between gap-4 border-b border-[#ece3d5] pb-3">
           <CardTitle
             dir="auto"
-            className="flex-1 text-lg font-bold text-amber-950"
+            className="flex-1 text-lg font-bold text-[#1b354b]"
           >
             {note.title}
           </CardTitle>
@@ -49,7 +49,7 @@ export const NoteDetailModal = ({ note, onClose }: NoteDetailModalProps) => {
         <CardContent className="py-4 max-h-[60vh] overflow-y-auto">
           <p
             dir="auto"
-            className="text-sm leading-relaxed text-amber-950 whitespace-pre-wrap"
+            className="text-sm leading-relaxed text-amber-950 whitespace-pre-wrap break-words"
           >
             {note.content}
           </p>
