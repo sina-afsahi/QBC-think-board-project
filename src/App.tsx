@@ -90,9 +90,9 @@ const App = () => {
     <div className="min-h-screen bg-background">
       <Toaster position="top-right" />
 
-      <header className="border-b border-amber-300/70 bg-amber-100/80 backdrop-blur-sm sticky top-0 z-10">
+      <header className="border-b-2 border-[#c2571a] bg-[#1b354b] sticky top-0 z-10 shadow-sm">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold tracking-tight text-amber-950">
+          <h1 className="text-xl font-bold tracking-tight text-[#fffdf9]">
             Think Board
           </h1>
         </div>

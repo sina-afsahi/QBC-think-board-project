@@ -84,9 +84,9 @@ export const NoteForm = ({
   };
 
   return (
-    <Card className="mb-8 shadow-sm border-amber-300/80 bg-card">
+    <Card className="mb-8 shadow-sm border-[#dfd5c5] bg-card">
       <CardHeader className="pb-3">
-        <CardTitle className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-medium w-fit">
+        <CardTitle className="text-lg font-bold text-[#1b354b]">
           {editingNote ? "Edit Note" : "Create a New Note"}
         </CardTitle>
       </CardHeader>
@@ -99,7 +99,7 @@ export const NoteForm = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               disabled={isSubmitting}
-              className="font-medium bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
+              className="font-medium bg-white disabled:bg-white border-[#d8cebe] text-[#1b354b]"
             />
           </div>
           <div>
@@ -110,17 +110,17 @@ export const NoteForm = ({
               value={content}
               onChange={(e) => setContent(e.target.value)}
               disabled={isSubmitting}
-              className="resize-none bg-amber-50/70 border-amber-300/90 placeholder:text-amber-900/40"
+              className="resize-none bg-white disabled:bg-white border-[#d8cebe] text-[#1b354b] placeholder:text-[#5c6b78]/60"
             />
           </div>
-          <div className="flex flex-col sm:flex-row justify-end gap-2">
+          <div className="flex flex-col sm:flex-row justify-start gap-2">
             {editingNote && (
               <Button
                 type="button"
                 variant="outline"
                 onClick={onCancelEdit}
                 disabled={isSubmitting}
-                className="w-full sm:w-auto border-amber-300 bg-amber-50/50 hover:bg-amber-100 text-amber-950"
+                className="w-full sm:w-auto border-[#1b354b]/30 bg-transparent hover:bg-[#1b354b]/10 text-[#1b354b]"
               >
                 Cancel
               </Button>
@@ -128,7 +128,7 @@ export const NoteForm = ({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto hover:bg-[#a64812]"
             >
               {isSubmitting
                 ? editingNote
